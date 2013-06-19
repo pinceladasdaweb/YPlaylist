@@ -17,6 +17,7 @@ YPlaylist.init({
     playlist: 'PLI9_ofA6tjoHDiiPndP_P5EMbOOT0-DmD', // The ID of your Youtube Playlist
     container: $('#container'),                     // domNode to attach to
     secure: true                                    // auto, true or false. If true all URLs starting with HTTPS
+    shuffle: false                                  // If true, Shuffle the playlist, default false
 });
 ```
 
