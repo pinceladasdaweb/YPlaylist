@@ -102,24 +102,24 @@ var YPlaylist = {
         });
     },
     carousel: function() {
+        var itemWidth = $('.slider li').outerWidth(true);
+
         $('.slider li:first').before($('.slider li:last'));
         
-        $(document.body).on('click', '.carousel-container .next', function(){
-            var item_width = $('.slider li').outerWidth() + 1;
-            var left_indent = parseInt($('.slider').css('left')) - item_width;
-            $('.slider:not(:animated)').animate({'left' : left_indent}, 500, function() {
-                $('.slider li:last').after($('.slider li:first'));
-                $('.slider').css({'left' : '-244px'});
-            });
-        });
-
-        $(document.body).on('click', '.carousel-container .prev', function(){
-            var item_width = $('.slider li').outerWidth() + 1;
-            var left_indent = parseInt($('.slider').css('left')) + item_width;
-            $('.slider:not(:animated)').animate({'left' : left_indent}, 500, function() {
-                $('.slider li:first').before($('.slider li:last'));
-                $('.slider').css({'left' : '-244px'});
-            });
+        $(document.body).on('click', '.carousel-container .controll', function() {
+            if($this.hasClass('next')){
+                var left_indent = parseInt(slider.css('left')) - itemWidth;
+                $('.slider:not(:animated)').animate({'left' : left_indent}, 500, function() {
+                    $('.slider li:last').after($('.slider li:first'));
+                    $('.slider').css({'left' : '-'+itemWidth+'px'});
+                });
+            } else {
+                var left_indent = parseInt(slider.css('left')) + itemWidth;
+                $('.slider:not(:animated)').animate({'left' : left_indent}, 500, function() {
+                    $('.slider li:first').before($('.slider li:last'));
+                    $('.slider').css({'left' : '-'+itemWidth+'px'});
+                });
+            }
         });
     }
 }
