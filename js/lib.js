@@ -102,12 +102,13 @@ var YPlaylist = {
         });
     },
     carousel: function() {
-        var itemWidth = $('.slider li').outerWidth(true);
+        var slider      = $('.slider'),
+            itemWidth   = $('.slider li').outerWidth(true);
 
         $('.slider li:first').before($('.slider li:last'));
         
         $(document.body).on('click', '.carousel-container .controll', function() {
-            if($this.hasClass('next')){
+            if($(this).hasClass('next')){
                 var left_indent = parseInt(slider.css('left')) - itemWidth;
                 $('.slider:not(:animated)').animate({'left' : left_indent}, 500, function() {
                     $('.slider li:last').after($('.slider li:first'));
