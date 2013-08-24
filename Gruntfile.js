@@ -5,7 +5,7 @@ module.exports = function(grunt) {
     pkg: grunt.file.readJSON('package.json'),
     uglify: {
       options: {
-        banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n'
+        banner: '/*! <%= pkg.name %> <%= pkg.version %> <%= grunt.template.today("yyyy-mm-dd") %> */\n'
       },
       build: {
         src: 'js/lib.js',
@@ -15,7 +15,7 @@ module.exports = function(grunt) {
     cssmin: {
       with_banner: {
         options: {
-          banner: '/* Minified CSS File of <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */'
+          banner: '/* Minified CSS File of <%= pkg.name %> <%= pkg.version %> <%= grunt.template.today("yyyy-mm-dd") %> */'
         },
         files: {
           'css/style.min.css': ['css/*.css']
