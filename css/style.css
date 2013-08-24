@@ -1,15 +1,10 @@
 /*
 +----------------------------------------------------------------+
-	Reset CSS					
+	Reset CSS
 +----------------------------------------------------------------+
 */
-body,div,dl,dt,dd,ul,ol,h1,h2,h3,h4,h5,h6,form,fieldset,legend,input,textarea,p,blockquote,th,td,address {margin:0; padding:0}
-table {
-	border-collapse: collapse;
-	border-spacing: 0;
-	font-size: inherit
-}
-fieldset, img {border: 0}
+body,div,ul,h1,h2 {margin:0; padding:0}
+img {border: 0}
 li {
 	list-style: none;
 	margin: 0;
@@ -24,7 +19,7 @@ a {
 
 /*
 +----------------------------------------------------------------+
-	Extras														
+	Extras
 +----------------------------------------------------------------+
 */
 .cf:before, .cf:after {
@@ -36,23 +31,23 @@ a {
 
 /*
 +----------------------------------------------------------------+
-	Fonts														
+	Fonts
 +----------------------------------------------------------------+
 */
 @font-face {
 	font-family: 'OratorpraOi-TextTwo';
-		src:	url('fonts/oratorpraoitext2.eot');
+		src:  url('fonts/oratorpraoitext2.eot');
 		src:  url('fonts/oratorpraoitext2.eot?#iefix') format('embedded-opentype'),
-					url('fonts/oratorpraoitext2.woff') format('woff'),
-					url('fonts/oratorpraoitext2.ttf') format('truetype'),
-					url('fonts/oratorpraoitext2.svg#oratorpraoitext2') format('svg');
+			  url('fonts/oratorpraoitext2.woff') format('woff'),
+			  url('fonts/oratorpraoitext2.ttf') format('truetype'),
+			  url('fonts/oratorpraoitext2.svg#oratorpraoitext2') format('svg');
 	font-weight: normal;
 	font-style: normal;
 }
 
 /*
 +----------------------------------------------------------------+
-	Definicoes Gerais														
+	Definicoes Gerais
 +----------------------------------------------------------------+
 */
 body {font:62.5% Verdana, Geneva, sans-serif}
@@ -64,7 +59,7 @@ h1 {
 
 /*
 +----------------------------------------------------------------+
-	Main Video														
+	Main Video
 +----------------------------------------------------------------+
 */
 .placeholder {
@@ -98,7 +93,7 @@ h1 {
 
 /*
 +----------------------------------------------------------------+
-	Carousel														
+	Carousel
 +----------------------------------------------------------------+
 */
 .carousel-container {
@@ -128,7 +123,7 @@ h1 {
 
 .carousel-inner {
 	float: left; /* important for inline positioning */
-	width: 732px; /* important (this width = width of list item(including margin) * items shown */ 
+	width: 732px; /* important (this width = width of list item(including margin) * items shown */
 	overflow: hidden;  /* important (hide the items outside the div) */
 }
 
