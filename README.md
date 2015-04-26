@@ -14,7 +14,7 @@ Youtube Playlist with jQuery
 2. From within a script tag or a JS file
 ```javascript
 YPlaylist.init({
-    playlist: 'PLI9_ofA6tjoHDiiPndP_P5EMbOOT0-DmD', // The ID of your Youtube Playlist
+    playlist: 'PLQCmSnNFVYnTD5p2fR4EXmtlR6jQJMbPb', // The ID of your Youtube Playlist
     container: $('#container'),                     // domNode to attach to
     secure: true                                    // "auto", true or false. If true all URLs starting with HTTPS
     shuffle: false                                  // If true, Shuffle the playlist, default false
