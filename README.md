@@ -15,10 +15,12 @@ Youtube Playlist with jQuery
 ```javascript
 YPlaylist.init({
     playlist: 'PLQCmSnNFVYnTD5p2fR4EXmtlR6jQJMbPb', // The ID of your Youtube Playlist
+    apiKey: 'Your APY KEY here',                    // Your API KEY
     container: $('#container'),                     // domNode to attach to
-    secure: true                                    // "auto", true or false. If true all URLs starting with HTTPS
     shuffle: false                                  // If true, Shuffle the playlist, default false
 });
 ```
+
+Here's how to get your API KEY: [https://developers.google.com/youtube/v3/getting-started](https://developers.google.com/youtube/v3/getting-started).
 
 Change the HTML as it deems necessary.
