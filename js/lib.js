@@ -1,21 +1,19 @@
 var YPlaylist = {
     init: function (config) {
-        this.protocol = (config.secure === 'auto') ? window.location.protocol === 'https:' ? 'https://' : 'http://' : config.secure ? 'https://' : 'http://';
-        this.url = this.protocol + 'gdata.youtube.com/feeds/api/playlists/' + config.playlist + '?v=2&max-results=50&alt=json&callback=?';
+        this.url       = 'https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=50&playlistId=' + config.playlist + '&key=' + config.apiKey + '&callback=?';
         this.container = config.container;
-        this.secure = config.secure;
-        this.shuffle = config.shuffle;
+        this.shuffle   = config.shuffle;
         this.fetch();
     },
     fetch: function () {
-        var self = this,
+        var self        = this,
             placeholder = $('<div class="placeholder"></div>'),
-            carousel = $('<div class="carousel-container"><span class="prev controll"></span><div class="carousel-inner"><ul class="slider"></ul></div><span class="next controll"></span></div>');
+            carousel    = $('<div class="carousel-container"><span class="prev controll"></span><div class="carousel-inner"><ul class="slider"></ul></div><span class="next controll"></span></div>');
 
         $.getJSON(self.url, function (data) {
-            var list = "",
-                res = {},
-                entries = data.feed.entry || [],
+            var list    = "",
+                res     = {},
+                entries = data.items,
                 i, len;
 
             if (self.shuffle) {
@@ -26,19 +24,19 @@ var YPlaylist = {
 
             $(self.container).append(placeholder);
             $(placeholder).html(function () {
-                var mainVideo = self.getId(entries[0].link[0].href);
-                return '<iframe width="820" height="380" src="' + self.protocol + 'www.youtube.com/embed/' + mainVideo + '" frameborder="0" allowfullscreen></iframe><h2>' + entries[0].title.$t + '</h2>';
+                var mainVideo = entries[0].snippet.resourceId.videoId;
+                return '<iframe width="820" height="380" src="https://www.youtube.com/embed/' + mainVideo + '" frameborder="0" allowfullscreen></iframe><h2>' + entries[0].snippet.title + '</h2>';
             });
 
             for (i = 0, len = entries.length; i < len; i += 1) {
                 res = {
-                    title: entries[i].title.$t,
-                    url: entries[i].link[0].href,
-                    thumb: entries[i].media$group.media$thumbnail[1].url,
-                    desc: entries[i].media$group.media$description.$t
+                    title: entries[i].snippet.title,
+                    url: entries[i].snippet.resourceId.videoId,
+                    thumb: entries[i].snippet.thumbnails.medium.url,
+                    desc: entries[i].snippet.description
                 };
 
-                list += '<li><a href="' + res.url + '" title="' + res.title + '"><img alt="' + res.title + '" src="' + res.thumb + '">';
+                list += '<li><a href="https://www.youtube.com/watch?v=' + res.url + '" title="' + res.title + '"><img alt="' + res.title + '" src="' + res.thumb + '">';
                 list += '<span class="shadow"></span></a>';
                 list += '<h2>' + res.title + '</h2>';
                 list += '<span class="spacer"></span>';
@@ -97,7 +95,7 @@ var YPlaylist = {
 
             $('.slider li').removeClass('current');
             $(this).addClass('current');
-            $('.placeholder iframe').attr({"src" : self.protocol + "www.youtube.com/embed/" + self.getId(url) + "?autoplay=1"});
+            $('.placeholder iframe').attr({"src" : "https://www.youtube.com/embed/" + self.getId(url) + "?autoplay=1"});
             $('.placeholder h2').html(title);
             $('html, body').animate({
                 scrollTop: $(".placeholder").offset().top
